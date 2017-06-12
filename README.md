@@ -1,2 +1,2 @@
 # apm_sleepmon
-Inside each application, there is a monster. They are appli-monsters!
+This is a project finished in the Antroid development course 
