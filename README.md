@@ -54,3 +54,8 @@ This is the project repository for the Software Design Projects course.
 <br/>
 [@Zhao Jiayi](https://github.com/zhaojiayi)	673936074@qq.com
 <br/>
+some  
+text  
+were 
+missed
+right?
