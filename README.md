@@ -3,7 +3,7 @@ This is the project repository for the Software Design Projects course.
 
 ## Guide
 
-``
+<pre>
 .
 ├─Documents
 └─Sleepmon	the Android project directory
@@ -39,7 +39,7 @@ This is the project repository for the Software Design Projects course.
     │                      └─sleepmon
     └─gradle
         └─wrapper
-``
+</pre>
 
 ## Developers
 
