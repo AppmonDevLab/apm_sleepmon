@@ -1,9 +1,8 @@
 # apm_sleepmon
-=
 This is the project repository for the Software Design Projects course.
 
-##Guide
-<cite>
+## Guide
+<blockquote>
 .
 ├─Documents
 └─Sleepmon	the Android project directory
@@ -39,9 +38,9 @@ This is the project repository for the Software Design Projects course.
     │                      └─sleepmon
     └─gradle
         └─wrapper
-</cite>
+</blockquote>
 
-##Developers
+## Developers
 
 [@Cheng Hongzhi](https://github.com/chenghz)	chenghzh@mail2.sysu.edu.cn
 <br/>
