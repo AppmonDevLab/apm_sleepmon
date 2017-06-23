@@ -2,7 +2,8 @@
 This is the project repository for the Software Design Projects course.
 
 ## Guide
-<blockquote>
+
+``
 .
 ├─Documents
 └─Sleepmon	the Android project directory
@@ -38,24 +39,13 @@ This is the project repository for the Software Design Projects course.
     │                      └─sleepmon
     └─gradle
         └─wrapper
-</blockquote>
+``
 
 ## Developers
 
-[@Cheng Hongzhi](https://github.com/chenghz)	chenghzh@mail2.sysu.edu.cn
-<br/>
-[@Liu Enshuo](https://github.com/liuenshuo9510)	877100750@qq.com
-<br/>
-[@Yang Luhao](https://github.com/yanglh751202951)	751202951@qq.com
-<br/>
-[@Liang Quanmin](https://github.com/Lqm321)	825372764@qq.com
-<br/>
-[@Yang Hao](https://github.com/yh25789)	1006972207@qq.com
-<br/>
-[@Zhao Jiayi](https://github.com/zhaojiayi)	673936074@qq.com
-<br/>
-some  
-text  
-were 
-missed
-right?
+[@Cheng Hongzhi](https://github.com/chenghz)	chenghzh@mail2.sysu.edu.cn  
+[@Liu Enshuo](https://github.com/liuenshuo9510)	877100750@qq.com  
+[@Yang Luhao](https://github.com/yanglh751202951)	751202951@qq.com  
+[@Liang Quanmin](https://github.com/Lqm321)	825372764@qq.com  
+[@Yang Hao](https://github.com/yh25789)	1006972207@qq.com  
+[@Zhao Jiayi](https://github.com/zhaojiayi)	673936074@qq.com  
