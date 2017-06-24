@@ -7,11 +7,8 @@ This is the project repository for the Software Design Projects course.
 .
 ├─Documents
 └─Sleepmon
-    ├─.git
     ├─.gradle
     ├─.idea
-    │  ├─copyright
-    │  └─libraries
     ├─app
     │  ├─build
     │  ├─libs
