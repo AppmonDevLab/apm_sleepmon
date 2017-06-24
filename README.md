@@ -6,39 +6,67 @@ This is the project repository for the Software Design Projects course.
 <pre>
 .
 ├─Documents
-└─Sleepmon	the Android project directory
+└─Sleepmon
+    ├─.git
+    ├─.gradle
     ├─.idea
-    │  └─copyright
+    │  ├─copyright
+    │  └─libraries
     ├─app
+    │  ├─build
+    │  ├─libs
     │  └─src
     │      ├─androidTest
-    │      │  └─java	Android java codes
+    │      │  └─java
     │      │      └─com
     │      │          └─appmon
     │      │              └─sleepmon
     │      ├─main
-    │      │  ├─java
+    │      │  ├─assets
+    │      │  │  └─iflytek
+    │      │  ├─java	Android java codes
     │      │  │  └─com
     │      │  │      └─appmon
     │      │  │          └─sleepmon
     │      │  │              ├─Fragments
     │      │  │              └─Receiver
+    │      │  ├─jniLibs
+    │      │  │  ├─arm64-v8a
+    │      │  │  ├─armeabi
+    │      │  │  ├─armeabi-v7a
+    │      │  │  ├─mips
+    │      │  │  ├─mips64
+    │      │  │  ├─x86
+    │      │  │  └─x86_64
     │      │  └─res
     │      │      ├─drawable	Android shape xml codes
+    │      │      ├─drawable-hdpi
+    │      │      ├─drawable-mdpi
+    │      │      ├─drawable-xhdpi
+    │      │      ├─drawable-xxhdpi
     │      │      ├─layout	Android xml codes
     │      │      ├─mipmap-hdpi
     │      │      ├─mipmap-mdpi
     │      │      ├─mipmap-xhdpi
     │      │      ├─mipmap-xxhdpi
     │      │      ├─mipmap-xxxhdpi
-    │      │      └─values	Android constant codes
+    │      │      ├─raw
+    │      │      ├─values	Android constant codes
+    │      │      ├─values-v21
+    │      │      ├─values-w820dp
+    │      │      └─xml
     │      └─test
     │          └─java
     │              └─com
     │                  └─appmon
     │                      └─sleepmon
+    ├─build
+    │  ├─generated
+    │  └─intermediates
+    │      └─dex-cache
     └─gradle
         └─wrapper
+
 </pre>
 
 ## Developers
