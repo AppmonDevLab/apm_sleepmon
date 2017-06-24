@@ -1,8 +1,8 @@
-package com.apm.sleepmon.Fragments;
+package com.appmon.sleepmon.Fragments;
 
 import android.Manifest;
 import android.app.AlarmManager;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
@@ -10,13 +10,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.icu.util.TimeZone;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,11 +29,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import com.apm.sleepmon.Receiver.AlarmReceiver;
-import com.apm.sleepmon.Receiver.MyReceiver;
-import com.apm.sleepmon.R;
+import com.appmon.sleepmon.Receiver.AlarmReceiver;
+import com.appmon.sleepmon.Receiver.MyReceiver;
+import com.appmon.sleepmon.R;
 
 
 import java.util.Calendar;

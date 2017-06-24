@@ -6,22 +6,22 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.appmon.sleepmon.Fragments.Alarm;
-import com.appmon.sleepmon.Fragments.Chart;
-import com.appmon.sleepmon.Fragments.Diary;
-import com.appmon.sleepmon.Fragments.Music;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.appmon.sleepmon.Fragments.AlarmFragment;
+import com.appmon.sleepmon.Fragments.ChartFragment;
+import com.appmon.sleepmon.Fragments.DiaryFragment;
+import com.appmon.sleepmon.Fragments.MusicFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, BottomNavigationBar.OnTabSelectedListener{
 
-    private Alarm alarm;
-    private Chart chart;
-    private Diary diary;
-    private Music music;
+    private AlarmFragment alarm;
+    private ChartFragment chart;
+    private DiaryFragment diary;
+    private MusicFragment music;
     private ViewPager viewPager;
     private BottomNavigationBar bottomNavigationBar;
     private List<Fragment> list = new ArrayList<>();
@@ -58,10 +58,10 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     }
 
     private void setViewPager() {
-        alarm = new Alarm();
-        chart = new Chart();
-        diary = new Diary();
-        music = new Music();
+        alarm = new AlarmFragment();
+        chart = new ChartFragment();
+        diary = new DiaryFragment();
+        music = new MusicFragment();
         list.add(alarm);
         list.add(chart);
         list.add(diary);

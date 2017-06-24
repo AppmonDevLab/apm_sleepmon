@@ -1,13 +1,11 @@
 /**
  * 
  */
-package com.apm.sleepmon.Receiver;
+package com.appmon.sleepmon.Receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-import android.widget.Toast;
 
 /**
  * @author lql

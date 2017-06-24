@@ -1,4 +1,4 @@
-package com.apm.sleepmon.Fragments;
+package com.appmon.sleepmon.Fragments;
 
 
 import android.app.Service;
@@ -8,7 +8,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.apm.sleepmon.R;
+import com.appmon.sleepmon.R;
 
 import java.io.IOException;
 

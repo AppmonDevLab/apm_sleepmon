@@ -1,6 +1,5 @@
-package com.apm.sleepmon.Fragments;
+package com.appmon.sleepmon.Fragments;
 
-import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,9 +17,9 @@ import android.widget.Toast;
 
 import com.anthonycr.grant.PermissionsManager;
 import com.anthonycr.grant.PermissionsResultAction;
-import com.apm.sleepmon.JsonParser;
-import com.apm.sleepmon.MainActivity;
-import com.apm.sleepmon.R;
+import com.appmon.sleepmon.JsonParser;
+import com.appmon.sleepmon.MainActivity;
+import com.appmon.sleepmon.R;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechUtility;

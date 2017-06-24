@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.appmon.sleepmon", appContext.getPackageName());
+        assertEquals("com.apm.sleepmon", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.apm.sleepmon.Receiver;
+package com.appmon.sleepmon.Receiver;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -10,9 +10,9 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.apm.sleepmon.Fragments.MusicFragment;
-import com.apm.sleepmon.MainActivity;
-import com.apm.sleepmon.R;
+import com.appmon.sleepmon.Fragments.MusicFragment;
+import com.appmon.sleepmon.MainActivity;
+import com.appmon.sleepmon.R;
 
 /**
  * Implementation of App Widget functionality.

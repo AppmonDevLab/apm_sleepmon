@@ -1,7 +1,7 @@
-package com.apm.sleepmon.Fragments;
+package com.appmon.sleepmon.Fragments;
 
 import android.animation.ObjectAnimator;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -24,8 +24,8 @@ import android.widget.SeekBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.apm.sleepmon.Music;
-import com.apm.sleepmon.R;
+import com.appmon.sleepmon.Music;
+import com.appmon.sleepmon.R;
 
 
 import java.text.SimpleDateFormat;

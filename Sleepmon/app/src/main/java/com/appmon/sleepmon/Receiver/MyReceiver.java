@@ -1,4 +1,4 @@
-package com.apm.sleepmon.Receiver;
+package com.appmon.sleepmon.Receiver;
 
 
 import android.content.BroadcastReceiver;
