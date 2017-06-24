@@ -1,4 +1,4 @@
-package com.appmon.sleepmon.Receiver;
+package com.appmon.sleepmon.Widget;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;

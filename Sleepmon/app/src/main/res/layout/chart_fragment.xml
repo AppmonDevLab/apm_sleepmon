@@ -58,7 +58,7 @@
             android:id="@+id/grade"/>
     </RelativeLayout>
 
-    <com.appmon.sleepmon.LineChart
+    <com.appmon.sleepmon.Utility.LineChart
         android:id="@+id/simpleLineChart"
         android:layout_width="match_parent"
         android:layout_height="200dp"

@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.appmon.sleepmon.R;
-import com.appmon.sleepmon.LineChart;
-
+import com.appmon.sleepmon.Utility.LineChart;
+import com.appmon.sleepmon.Utility.myDB2;
 import java.util.HashMap;
 
 import static android.content.Context.MODE_PRIVATE;

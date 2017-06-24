@@ -1,4 +1,4 @@
-package com.appmon.sleepmon;
+package com.appmon.sleepmon.Model;
 
 public class Music {
 

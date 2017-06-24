@@ -1,4 +1,4 @@
-package com.appmon.sleepmon;
+package com.appmon.sleepmon.Utility;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

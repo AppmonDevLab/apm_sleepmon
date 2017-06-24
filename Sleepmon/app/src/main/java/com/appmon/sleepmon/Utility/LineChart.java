@@ -1,4 +1,4 @@
-package com.appmon.sleepmon;
+package com.appmon.sleepmon.Utility;
 
 import android.content.Context;
 import android.graphics.Canvas;

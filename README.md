@@ -20,13 +20,15 @@ This is the project repository for the Software Design Projects course.
     │      │              └─sleepmon
     │      ├─main
     │      │  ├─assets
-    │      │  │  └─iflytek
     │      │  ├─java	Android java codes
     │      │  │  └─com
     │      │  │      └─appmon
     │      │  │          └─sleepmon
     │      │  │              ├─Fragments
-    │      │  │              └─Receiver
+    │      │  │              ├─Model
+    │      │  │              ├─Receiver
+    │      │  │              ├─Utility
+    │      │  │              └─Widget
     │      │  ├─jniLibs
     │      │  │  ├─arm64-v8a
     │      │  │  ├─armeabi

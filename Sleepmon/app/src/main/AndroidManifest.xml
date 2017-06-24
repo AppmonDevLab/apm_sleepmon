@@ -40,7 +40,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <receiver android:name="com.appmon.sleepmon.Receiver.MusicWidget">
+        <receiver android:name="com.appmon.sleepmon.Widget.MusicWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.apm.sleepmon.changeWidget" />

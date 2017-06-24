@@ -24,10 +24,8 @@ import android.widget.SeekBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.appmon.sleepmon.Music;
 import com.appmon.sleepmon.R;
-
-
+import com.appmon.sleepmon.Model.Music;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
