@@ -2,7 +2,7 @@ package com.appmon.sleepmon.Fragments;
 
 import android.Manifest;
 import android.app.AlarmManager;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;

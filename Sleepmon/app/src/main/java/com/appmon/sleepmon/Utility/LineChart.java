@@ -15,7 +15,7 @@ public class LineChart extends View {
     private int mWidth, mHeight;
     private int yInterval;
     //Y轴字体的大小
-    private float mYAxisFontSize = 24;
+    private float mYAxisFontSize = 32;
 
     //线的颜色
     private int mLineColor = Color.parseColor("#00BCD4");
@@ -123,7 +123,7 @@ public class LineChart extends View {
             //计算x轴 刻度间距
             int xInterval = (int) ((mWidth - xOffset) / (mXAxis.length));
             //获取X轴刻度Y坐标
-            int xItemY = (int) (mYAxisFontSize + mYAxis.length * yInterval);
+            int xItemY = (int) (mYAxisFontSize + (mYAxis.length-0.5) * yInterval);
 
             for (int i = 0; i < mXAxis.length; i++) {
                 canvas.drawText(mXAxis[i], i * xInterval + xItemX + xOffset, xItemY, axisPaint);
