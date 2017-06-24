@@ -1,6 +1,7 @@
 package com.appmon.sleepmon.Fragments;
 
-import android.support.v4.app.Fragment;
+import android.app.AlarmManager;
+import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,20 +21,18 @@ import java.util.HashMap;
 import static android.content.Context.MODE_PRIVATE;
 
 public class ChartFragment extends Fragment {
-    private LineChart mSimpleLineChart;
-    private TextView suggestion, gradeText;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.chart_fragment, null);
+        View view = inflater.inflate(R.layout.chart_fragment, container, false);
         init(view);
         return view;
     }
 
     public void init(View view) {
-        suggestion = (TextView) view.findViewById(R.id.suggest);
-        gradeText = (TextView) view.findViewById(R.id.grade);
+        TextView suggestion = (TextView) view.findViewById(R.id.suggest);
+        TextView gradeText = (TextView) view.findViewById(R.id.grade);
         myDB2 dbHelp = new myDB2(getActivity());
         SQLiteDatabase sqLiteDatabase = dbHelp.getWritableDatabase();
         try {
@@ -50,7 +49,7 @@ public class ChartFragment extends Fragment {
                 }
             }
             if (time.length != 0) {
-                mSimpleLineChart = (LineChart) view.findViewById(R.id.simpleLineChart);
+                LineChart mSimpleLineChart = (LineChart) view.findViewById(R.id.simpleLineChart);
                 String[] yItem = {"100", "80", "60", "40", "20", "0"};
                 mSimpleLineChart.setXItem(time);
                 mSimpleLineChart.setYItem(yItem);

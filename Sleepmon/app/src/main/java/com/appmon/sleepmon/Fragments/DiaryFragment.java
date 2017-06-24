@@ -1,7 +1,8 @@
 package com.appmon.sleepmon.Fragments;
 
 import android.app.AlertDialog;
-import android.support.v4.app.Fragment;
+import android.app.AlarmManager;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -43,11 +44,25 @@ public class DiaryFragment extends Fragment implements View.OnClickListener{
     private Intent intent1;
     private View view;
     public static boolean tag = true;
+    SimpleAdapter simpleAdapter;
+
+    myDB dbHelp;
+    SQLiteDatabase sqLiteDatabase;
+    Cursor cursor;
+    int counts;
+    String[] date;
+    String[] month;
+    String[] weekday;
+    String[] time;
+    String[] diary;
+    String[] diary_summary;
+    List<Map<String, Object>> data;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.diary_fragment, null);
+        view = inflater.inflate(R.layout.diary_fragment, container, false);
         login = (Button) view.findViewById(R.id.login);
         login.setOnClickListener(this);
         if (!tag) {
@@ -141,45 +156,9 @@ public class DiaryFragment extends Fragment implements View.OnClickListener{
     public void init(View view) {
         listView = (ListView)view.findViewById(R.id.diary_list);
         add_diary = (ImageButton)view.findViewById(R.id.add_diary);
-        intent1 = new Intent(getActivity(), Diary_edit.class);
 
-        myDB dbHelp = new myDB(getActivity());
-        final SQLiteDatabase sqLiteDatabase = dbHelp.getWritableDatabase();
-        final Cursor cursor = sqLiteDatabase.rawQuery("select * from diary_table", null);
-        int counts = cursor.getCount();
-        final String[] date = new String[counts];
-        final String[] month = new String[counts];
-        final String[] weekday = new String[counts];
-        final String[] time = new String[counts];
-        final String[] diary = new String[counts];
-        final String[] diary_summary = new String[counts];
-        final List<Map<String, Object>> data = new ArrayList<>();
 
-        if (cursor.moveToFirst() == true) {
-            for (int i = 0; i < counts; i++) {
-                month[i] = cursor.getString(cursor.getColumnIndex("month"));
-                date[i] = cursor.getString(cursor.getColumnIndex("date"));
-                weekday[i] = cursor.getString(cursor.getColumnIndex("week"));
-                time[i] = cursor.getString(cursor.getColumnIndex("time"));
-                diary[i] = cursor.getString(cursor.getColumnIndex("diary"));
-                diary_summary[i] = getSummary(diary[i]);
-                cursor.moveToNext();
-            }
-        }
-        for (int i = 0; i < counts; i++) {
-            Map<String, Object>temp = new LinkedHashMap<>();
-            temp.put("month", month[i]);
-            temp.put("date", date[i]);
-            temp.put("week", weekday[i]);
-            temp.put("time", time[i]);
-            temp.put("diary", diary_summary[i]);
-            data.add(temp);
-        }
-        final SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(), data, R.layout.diary_list,
-                new String[] {"month","date", "week", "time", "diary"}, new int[] {R.id.item_month,
-                R.id.item_date, R.id.item_week, R.id.item_time, R.id.item_summary});
-        if (cursor.moveToFirst() == true)
-            listView.setAdapter(simpleAdapter);
+        update();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -219,6 +198,52 @@ public class DiaryFragment extends Fragment implements View.OnClickListener{
                 getActivity().startActivityForResult(intent1, 6);
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        update();
+        super.onResume();
+    }
+
+    private void update() {
+        intent1 = new Intent(getActivity(), Diary_edit.class);
+        dbHelp = new myDB(getActivity());
+        sqLiteDatabase = dbHelp.getWritableDatabase();
+        cursor = sqLiteDatabase.rawQuery("select * from diary_table", null);
+        counts = cursor.getCount();
+        date = new String[counts];
+        month = new String[counts];
+        weekday = new String[counts];
+        time = new String[counts];
+        diary = new String[counts];
+        diary_summary = new String[counts];
+        data = new ArrayList<>();
+        if (cursor.moveToFirst() == true) {
+            for (int i = 0; i < counts; i++) {
+                month[i] = cursor.getString(cursor.getColumnIndex("month"));
+                date[i] = cursor.getString(cursor.getColumnIndex("date"));
+                weekday[i] = cursor.getString(cursor.getColumnIndex("week"));
+                time[i] = cursor.getString(cursor.getColumnIndex("time"));
+                diary[i] = cursor.getString(cursor.getColumnIndex("diary"));
+                diary_summary[i] = getSummary(diary[i]);
+                cursor.moveToNext();
+            }
+        }
+        for (int i = 0; i < counts; i++) {
+            Map<String, Object>temp = new LinkedHashMap<>();
+            temp.put("month", month[i]);
+            temp.put("date", date[i]);
+            temp.put("week", weekday[i]);
+            temp.put("time", time[i]);
+            temp.put("diary", diary_summary[i]);
+            data.add(temp);
+        }
+        simpleAdapter = new SimpleAdapter(getActivity(), data, R.layout.diary_list,
+                new String[] {"month","date", "week", "time", "diary"}, new int[] {R.id.item_month,
+                R.id.item_date, R.id.item_week, R.id.item_time, R.id.item_summary});
+        if (cursor.moveToFirst() == true)
+            listView.setAdapter(simpleAdapter);
     }
 
     public String getSummary(String string) {

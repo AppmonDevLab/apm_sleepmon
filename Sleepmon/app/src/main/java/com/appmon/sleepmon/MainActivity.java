@@ -1,8 +1,9 @@
 package com.appmon.sleepmon;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -16,29 +17,28 @@ import com.appmon.sleepmon.Fragments.MusicFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, BottomNavigationBar.OnTabSelectedListener{
+public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener{
 
-    private AlarmFragment alarm;
-    private ChartFragment chart;
-    private DiaryFragment diary;
-    private MusicFragment music;
-    private ViewPager viewPager;
+    public AlarmFragment alarm;
+    public ChartFragment chart;
+    public DiaryFragment diary;
+    public MusicFragment music;
     private BottomNavigationBar bottomNavigationBar;
     private List<Fragment> list = new ArrayList<>();
+    private FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fm = getFragmentManager();
 
         initView();
         initBottomBar();
-        setViewPager();
     }
 
     private void initView() {
-        viewPager = (ViewPager)findViewById(R.id.viewpager);
-        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottombar);
+        bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom);
     }
 
     private void initBottomBar() {
@@ -54,71 +54,75 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
                 .addItem(new BottomNavigationItem(R.drawable.music_pressed, "催眠曲")
                         .setActiveColorResource(R.color.music).setInactiveIconResource(R.drawable.music_normal))
                 .initialise();
+        onTabSelected(0);
         bottomNavigationBar.setTabSelectedListener(this);
     }
 
-    private void setViewPager() {
-        alarm = new AlarmFragment();
-        chart = new ChartFragment();
-        diary = new DiaryFragment();
-        music = new MusicFragment();
-        list.add(alarm);
-        list.add(chart);
-        list.add(diary);
-        list.add(music);
-        viewPager.addOnPageChangeListener(this);
-        viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public android.support.v4.app.Fragment getItem(int position) {
-                return list.get(position);
-            }
-
-            @Override
-            public int getCount() {
-                return list.size();
-            }
-        });
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-    }
-
-
-    @Override
-    public void onPageSelected(int position) {
-        bottomNavigationBar.selectTab(position);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-    }
-
-    @Override
-    public void onTabSelected(int position) {
-        switch (position) {
-            case 0:
-                viewPager.setCurrentItem(0);
-                break;
-            case 1:
-                viewPager.setCurrentItem(1);
-                break;
-            case 2:
-                viewPager.setCurrentItem(2);
-                break;
-            case 3:
-                viewPager.setCurrentItem(3);
-                break;
+    public void hideFragment(FragmentTransaction transaction) {
+        for (Fragment fragment : list) {
+            transaction.hide(fragment);
         }
     }
 
     @Override
-    public void onTabUnselected(int position) {
+    public void onTabSelected(int position) {
 
+        FragmentTransaction transaction = fm.beginTransaction();
+        hideFragment(transaction);
+        switch (position) {
+            case 0:
+                if (alarm == null) {
+                    alarm = new AlarmFragment();
+                    transaction.add(R.id.layFrame, alarm);
+                    list.add(alarm);
+                } else {
+                    transaction.show(alarm);
+                }
+                DiaryFragment.tag = true;
+                break;
+            case 1:
+                if (chart != null) {
+                    chart = null;
+                }
+                chart = new ChartFragment();
+                transaction.add(R.id.layFrame, chart);
+                list.add(chart);
+                DiaryFragment.tag = true;
+                break;
+            case 2:
+                if (diary != null) {
+                    diary = null;
+                }
+                diary = new DiaryFragment();
+                transaction.add(R.id.layFrame, diary);
+                list.add(diary);
+                break;
+            case 3:
+                if (music == null) {
+                    music = new MusicFragment();
+                    transaction.add(R.id.layFrame, music);
+                    list.add(music);
+                } else {
+                    transaction.show(music);
+                }
+                DiaryFragment.tag = true;
+                break;
+        }
+        transaction.commit();
     }
 
     @Override
-    public void onTabReselected(int position) {
+    public void onTabReselected(int position) {}
 
+    @Override
+    public void onTabUnselected(int position) {}
+
+    @Override
+    public void onActivityResult(int resquestCode, int resultCode, Intent data1) {
+        if (resquestCode == 6 || resquestCode == 9) {
+            diary = null;
+            DiaryFragment.tag = false;
+            onTabSelected(2);
+        }
     }
 }

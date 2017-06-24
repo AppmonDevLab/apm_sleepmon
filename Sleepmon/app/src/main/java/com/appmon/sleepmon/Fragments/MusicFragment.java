@@ -1,7 +1,8 @@
 package com.appmon.sleepmon.Fragments;
 
 import android.animation.ObjectAnimator;
-import android.support.v4.app.Fragment;
+import android.app.AlarmManager;
+import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -47,6 +48,7 @@ public class MusicFragment extends Fragment implements View.OnClickListener{
     private SimpleDateFormat time = new SimpleDateFormat("mm:ss", Locale.getDefault());
     private ObjectAnimator animator;
     private int musicPosition = 0;
+    private boolean barFocused = false;
 
     public static String musicWidget = "com.apm.sleepmon.musicOption";
     public static String changeWidget = "com.apm.sleepmon.changeWidget";
@@ -57,7 +59,7 @@ public class MusicFragment extends Fragment implements View.OnClickListener{
         public void run() {
             int current = musicService.getMediaPlayer().getCurrentPosition();
             int res = musicService.getMediaPlayer().getDuration() - current;
-            seekBar.setProgress(current);
+            if (!barFocused) seekBar.setProgress(current);
             playTime.setText(time.format(current));
             resTime.setText(time.format(res));
             if (res <= 0) {
@@ -78,7 +80,7 @@ public class MusicFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.music_fragment, null);
+        View view = inflater.inflate(R.layout.music_fragment, container, false);
 
         findView(view);
         prepareMusic();
@@ -117,23 +119,23 @@ public class MusicFragment extends Fragment implements View.OnClickListener{
     }
 
     private void prepareMusic() {
-        music.add(new Music("music1", R.raw.music1));
-        music.add(new Music("music2", R.raw.music2));
-        music.add(new Music("music3", R.raw.music3));
-        music.add(new Music("music4", R.raw.music4));
-        music.add(new Music("music5", R.raw.music5));
-        music.add(new Music("music6", R.raw.music6));
-        music.add(new Music("music7", R.raw.music7));
-        music.add(new Music("music8", R.raw.music8));
-        music.add(new Music("music9", R.raw.music9));
-        music.add(new Music("music10", R.raw.music10));
-        music.add(new Music("music11", R.raw.music11));
-        music.add(new Music("music12", R.raw.music12));
-        music.add(new Music("music13", R.raw.music13));
-        music.add(new Music("music14", R.raw.music14));
-        music.add(new Music("music15", R.raw.music15));
-        music.add(new Music("music16", R.raw.music16));
-        music.add(new Music("music17", R.raw.music17));
+        music.add(new Music("乡村", R.raw.music1));
+        music.add(new Music("树林", R.raw.music2));
+        music.add(new Music("月光林地", R.raw.music3));
+        music.add(new Music("翡翠梦境", R.raw.music4));
+        music.add(new Music("太阳井", R.raw.music5));
+        music.add(new Music("费尔伍德之森", R.raw.music6));
+        music.add(new Music("星空", R.raw.music7));
+        music.add(new Music("宇宙的私语", R.raw.music8));
+        music.add(new Music("Beginning", R.raw.music9));
+        music.add(new Music("It's the right time", R.raw.music10));
+        music.add(new Music("Not all the best", R.raw.music11));
+        music.add(new Music("Time flows", R.raw.music12));
+        music.add(new Music("Giraffe Blues", R.raw.music13));
+        music.add(new Music("freesia", R.raw.music14));
+        music.add(new Music("Luminous", R.raw.music15));
+        music.add(new Music("BE MY LIGHT", R.raw.music16));
+        music.add(new Music("Reason", R.raw.music17));
     }
 
     private void setListView() {
@@ -200,7 +202,9 @@ public class MusicFragment extends Fragment implements View.OnClickListener{
             public void onProgressChanged(final SeekBar seekBar, int progress, boolean fromUser) {}
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                barFocused = true;
+            }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
@@ -213,6 +217,7 @@ public class MusicFragment extends Fragment implements View.OnClickListener{
                 if (musicService.getMediaPlayer().isPlaying()) {
                     animator.start();
                 }
+                barFocused = false;
             }
         });
     }

@@ -26,7 +26,8 @@ import com.iflytek.cloud.SpeechUtility;
 import com.iflytek.cloud.ui.RecognizerDialog;
 import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.iflytek.sunflower.FlowerCollector;
-
+import android.app.AlarmManager;
+import android.app.Fragment;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -45,6 +46,9 @@ public class Diary_edit extends AppCompatActivity implements View.OnClickListene
     int minute;
     int hour;
     int weekday;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
